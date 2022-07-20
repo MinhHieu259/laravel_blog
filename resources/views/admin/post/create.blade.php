@@ -3,13 +3,21 @@
 @section('content')
 <div class="container-fluid px-4">
     <div class="card mt-4">
+        @if($errors->any())
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <div>{{$error}}</div>
+            @endforeach
+        </div>
+     @endif
         <div class="card-header">
             <h4>Add Posts
                 <a href="{{url('admin/add-post')}}" class="btn btn-primary btn-sm float-end">Add Post</a>
             </h4>
         </div>
         <div class="card-body">
-            <form action="" method="POST">
+            <form action="{{url('admin/add-post')}}" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label for="">Category</label>
                     <select name="category_id" class="form-control">
@@ -29,7 +37,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Description</label>
-                    <input name="description" type="text" class="form-control"/>
+                    <textarea name="description" id="mySummernote" class="form-control"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="">Youtube Iframe Link</label>
@@ -42,7 +50,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Meta Description</label>
-                  <textarea name="meta_Description" class="form-control" rows="3"></textarea>
+                  <textarea name="meta_description" class="form-control" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="">Meta Keyword</label>

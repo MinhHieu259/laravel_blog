@@ -29,7 +29,7 @@
                     </div>
                     <div class="mb-3">
                         <label>Description</label>
-                        <textarea rows="5" name="description" class="form-control">{{$category->description}}</textarea>
+                        <textarea rows="5" id="mySummernote" name="description" class="form-control">{{$category->description}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label>Image</label>

@@ -28,15 +28,11 @@
                     </div>
                     <div class="mb-3">
                         <label>Description</label>
-                        <textarea rows="5" name="description" class="form-control"></textarea>
+                        <textarea rows="5" id="mySummernote" name="description" class="form-control"></textarea>
                     </div>
                     <div class="mb-3">
                         <label>Image</label>
                         <input type="file" name="image" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Slug</label>
-                        <input type="text" name="slug" class="form-control">
                     </div>
                     <h6>SEO Tags</h6>
                     <div class="mb-3">

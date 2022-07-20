@@ -13,7 +13,7 @@
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
                 <div class="row">
-                    <table class="table table-bordered">
+                    <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>

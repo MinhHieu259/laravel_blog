@@ -4,9 +4,7 @@
     <div class="container-fluid px-4">
         <div class="card mt-4">
             <div class="card-header">
-                <h4>View Posts
-                    <a href="{{ url('admin/add-post') }}" class="btn btn-primary btn-sm float-end">Add Post</a>
-                </h4>
+                <h4>View User</h4>
             </div>
             <div class="card-body">
                 @if (session('message'))
@@ -16,18 +14,22 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Category</th>
-                            <th>Post name</th>
-                            <th>Status</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($posts as $item)
+                        @foreach ($users as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->category->name}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->status == '1' ? 'Hidden' : 'Visible'}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->role_as == '1' ? 'Admin' : 'User'}}</td>
+                            <td>
+                                <a href="{{url('admin/user/'.$item->id)}}" class="btn btn-success">Edit</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

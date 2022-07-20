@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('posts', [PostController::class, 'index']);
     Route::get('add-post', [PostController::class, 'create']);
+    Route::post('add-post', [PostController::class, 'store']);
+
+    Route::get('users', [UserController::class, 'index']);
+    Route::get('user/{user_id}', [UserController::class, 'edit']);
+    Route::put('update-user/{user_id}', [UserController::class, 'update']);
 });
