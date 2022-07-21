@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', "$category->meta_title")
+@section('meta_description', "$category->meta_description")
+@section('meta_keyword', "$category->meta_keyword")
 @section('content')
     <div class="py-4">
         <div class="container">
@@ -8,8 +11,6 @@
                        <h4> {{$category->name}}</h4>
                     </div>
                     @forelse ($post as $postitem )
-                        
-                    
                     <div class="card card-shadow mt-4">
                         <div class="card-body">
                            <a class="text-decoration-none" href="{{url('tutorial/'.$category->slug.'/'.$postitem->slug)}}"><h2 class="post-heading">{{$postitem->name}}</h2></a>
@@ -25,6 +26,10 @@
                         </div>
                     </div>
                     @endforelse
+
+                    <div class="your-paginate mt-4">
+                        {{$post->links()}}
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="border p-2">
