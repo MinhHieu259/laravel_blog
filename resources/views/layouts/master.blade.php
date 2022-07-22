@@ -68,6 +68,7 @@
         });
     </script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    @yield('scripts')
 </body>
 
 </html>

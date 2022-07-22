@@ -90,6 +90,7 @@ class CategoryController extends Controller
             if (File::exists($destination)) {
                 File::delete($destination);
             }
+            $category->posts()->delete();
             $category->delete();
             return redirect('/admin/category')->with('message', "Delete Category SuccessFully");
         } else {

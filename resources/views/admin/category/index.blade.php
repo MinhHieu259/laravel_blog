@@ -37,7 +37,8 @@
                                         <a href="{{url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="{{url('admin/delete-category/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                        {{-- <a href="{{url('admin/delete-category/'.$item->id)}}" class="btn btn-danger">Delete</a> --}}
+                                        <button type="button" class="btn btn-danger deleteCategoryBtn" value="{{$item->id}}">Delete</button>
                                     </td>
                                 </tr>
                             @endforeach

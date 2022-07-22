@@ -30,6 +30,7 @@
         <main class="">
             @yield('content')
         </main>
+        @include('layouts.inc.frontend-footer')
     </div>
     <!-- Scripts -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
