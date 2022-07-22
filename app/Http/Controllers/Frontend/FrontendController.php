@@ -7,10 +7,13 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+use function GuzzleHttp\Promise\all;
+
 class FrontendController extends Controller
 {
     public function index(){
-        return view('frontend.index');
+        $category_all = Category::where('status', '0')->get();
+        return view('frontend.index', compact('category_all'));
     }
 
     public function viewCategoryPost(string $category_slug)
