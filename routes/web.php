@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,9 @@ Route::get('/', [FrontendController::class, 'index']);
 Route::get('tutorial/{category_slug}', [FrontendController::class, 'viewCategoryPost']);
 Route::get('tutorial/{category_slug}/{post_slug}', [FrontendController::class, 'viewPost']);
 
+//Comment
+Route::post('comments', [CommentController::class, 'store']);
+
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get("/dashboard", [DashboardController::class, 'index']);
 
@@ -25,7 +29,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::post("/add-category", [CategoryController::class, 'store']);
     Route::get('edit-category/{category_id}', [CategoryController::class, 'edit']);
     Route::put('update-category/{category_id}', [CategoryController::class, 'update']);
-    Route::get('delete-category/{category_id}', [CategoryController::class, 'destroy']);
+    // Route::get('delete-category/{category_id}', [CategoryController::class, 'destroy']);
+    Route::post('delete-category', [CategoryController::class, 'destroy']);
 
     Route::get('posts', [PostController::class, 'index']);
     Route::get('add-post', [PostController::class, 'create']);

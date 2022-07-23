@@ -1,7 +1,7 @@
-<div class="global-navbar">
+<div class="global-navbar bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 d-none d-sm-none d-md-inline">
                 <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" width="80px">
             </div>
             <div class="col-md-9 my-auto">
@@ -11,8 +11,13 @@
             </div>
         </div>
     </div>
+</div>
+<div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-green">
         <div class="container">
+            <a href="" class="navbar-brand d-inline d-sm-none d-md-none">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" style="width: 80px">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -47,9 +52,20 @@
                         <a class="nav-link" href="{{url("tutorial/".$cateitem->slug)}}">{{$cateitem->name}}</a>
                     </li>
                     @endforeach
-                   
+                    @if (Auth::check())
+                    <li><a class="nav-link btn-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{route('logout')}}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+                @endif
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+   
+

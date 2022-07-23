@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\CategoryFormRequest;
+
 
 class CategoryController extends Controller
 {
@@ -82,9 +84,9 @@ class CategoryController extends Controller
         return redirect('/admin/category')->with('message', "Update Category SuccessFully");
     }
 
-    public function destroy($category_id)
+    public function destroy(Request $request)
     {
-        $category = Category::find($category_id);
+        $category = Category::find($request->category_id_delete);
         if ($category) {
             $destination = 'uploads/category/' . $category->image;
             if (File::exists($destination)) {
