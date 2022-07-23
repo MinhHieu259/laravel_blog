@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -20,6 +21,7 @@ Route::get('tutorial/{category_slug}/{post_slug}', [FrontendController::class, '
 
 //Comment
 Route::post('comments', [CommentController::class, 'store']);
+Route::post('delete-comment', [CommentController::class, 'destroy']);
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get("/dashboard", [DashboardController::class, 'index']);
@@ -39,4 +41,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('users', [UserController::class, 'index']);
     Route::get('user/{user_id}', [UserController::class, 'edit']);
     Route::put('update-user/{user_id}', [UserController::class, 'update']);
+
+    Route::get('settings', [SettingController::class, 'index']);
+    Route::post('settings', [SettingController::class, 'savedata']);
 });
